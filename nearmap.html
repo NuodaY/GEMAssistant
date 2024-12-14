@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; child-src * 'self' blob: http:;
+    img-src * 'self' data: http:; script-src 'self' 'unsafe-inline' 'unsafe-eval' *;
+    style-src 'self' 'unsafe-inline' *">    
+    <title>GEM小助手</title>
+    <script src="https://cdn.jsdelivr.net/npm/ol@v8.2.0/dist/ol.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v8.2.0/ol.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/34cf5b44a8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="map" style="position:absolute; top:0; right: 0; bottom: 0; left:0;"></div>
+
+    <input id="addressInput" type="search" placeholder="在这里输入地址~" />
+    <button id="searchIcon">
+        <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+    
+    <button id="backtoMenu">
+        <i class="fa-solid fa-house"></i>
+    </button>
+
+    <script src='https://cdn.jsdelivr.net/npm/bignumber.js@9.1.2/bignumber.min.js'></script>
+    <script src="nearmap.js"></script>
+
+    <script type="text/javascript">
+      const API_KEY = 'YjhmMGU4ZGYtMmQ1MC00YmZmLWIwZDYtYmRhNzFjNzQyZDNj';
+      const map = new ol.Map({
+        target: 'map',
+        layers: [
+          new ol.layer.Tile({
+            source: new ol.source.XYZ({
+              url: 'https://api.nearmap.com/tiles/v3/Vert/{z}/{x}/{y}.img?tertiary=satellite&apikey=' + API_KEY
+            })
+          })
+        ],
+        view: new ol.View({
+          center: ol.proj.fromLonLat([144.95, -37.81]),
+          zoom: 12
+        })
+      });
+    </script>
+</body>
+</html>
