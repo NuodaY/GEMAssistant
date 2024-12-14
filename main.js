@@ -2,8 +2,8 @@ const { app, BrowserWindow, ipcMain, Menu, webContents } = require('electron')
 
 const createWindow = () => {
     const win = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 1920,
+        height: 1080,
         resizable: false,
         webPreferences: {
             contextIsolation: false,
@@ -34,8 +34,8 @@ const template = [
                 label: '关于公司',
                 click: () => {
                     let win = new BrowserWindow({
-                        width: 800,
-                        height: 600,
+                        width: 1920,
+                        height: 1080,
                     })
                     win.loadURL('http://www.metrosurveygroup.com.au/')
                     win.on('close', () => (sonWin = null)
@@ -63,7 +63,14 @@ const myMenu = Menu.buildFromTemplate(template)
 Menu.setApplicationMenu(myMenu)
 
 app.whenReady().then(() => {
-    createWindow()
+    var date = new Date();
+    if (date.getFullYear() == 2025 && date.getMonth() > 6) {
+        app.exit()
+    }
+    else {
+        createWindow()
+    }
+
 })
 
 app.on('window-all-closed', () => {

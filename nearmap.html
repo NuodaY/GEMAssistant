@@ -23,6 +23,26 @@
         <i class="fa-solid fa-house"></i>
     </button>
 
+    <button id="northButton">
+        N
+    </button>
+
+    <button id="southButton">
+        S
+    </button>
+
+    <button id="eastButton">
+        E
+    </button>
+
+    <button id="westButton">
+        W
+    </button>
+
+    <button id="vertButton">
+        V
+    </button>
+
     <script src='https://cdn.jsdelivr.net/npm/bignumber.js@9.1.2/bignumber.min.js'></script>
     <script src="nearmap.js"></script>
 
@@ -32,6 +52,7 @@
         target: 'map',
         layers: [
           new ol.layer.Tile({
+            name: "base",
             source: new ol.source.XYZ({
               url: 'https://api.nearmap.com/tiles/v3/Vert/{z}/{x}/{y}.img?tertiary=satellite&apikey=' + API_KEY
             })
