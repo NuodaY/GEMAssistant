@@ -1,3 +1,4 @@
 # output executable files
-out/
+out/make
 electron.exe
+gemassistant.exe
